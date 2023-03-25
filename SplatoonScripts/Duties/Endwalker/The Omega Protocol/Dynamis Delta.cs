@@ -111,12 +111,12 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                         //InternalLog.Information($"Me close: {isMeClose}");
                         if(myTether == Effects.UpcomingBlueTether)
                         {
-                            Alert("Blue - to beetle!", ImGuiColors.TankBlue);
+                            Alert("", ImGuiColors.TankBlue);
                             Controller.GetElementByName("Beetle").Enabled = true;
                         }
                         else
                         {
-                            Alert("Green - to final (stretch)", ImGuiColors.HealerGreen);
+                            Alert("", ImGuiColors.HealerGreen);
                             Controller.GetElementByName("Final").Enabled = true;
                         }
                         if(Svc.Objects.Count(x => x.DataId.EqualsAny<uint>(HandRed, HandBlue)) == 8)
@@ -136,7 +136,7 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                     {
                         if (isMeClose && PlayerHands[GetClosestPlayer().ObjectId] == PlayerHands[Svc.ClientState.LocalPlayer.ObjectId])
                         {
-                            Alert("Swap to other side!", GradientColor.Get(ImGuiColors.ParsedPink, 0xFF000000.ToVector4(), 200));
+                            Alert("", GradientColor.Get(ImGuiColors.ParsedPink, 0xFF000000.ToVector4(), 200));
                         }
                         else
                         {
@@ -144,7 +144,7 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                             {
                                 if (HasEffect(Effects.UpcomingBlueTether))
                                 {
-                                    Alert("Prepare to break tether then stack!");
+                                    Alert("");
                                     var pl = GetClosestPlayer();
                                     if (Controller.TryGetElementByName("Stack partner", out var e) && pl != null)
                                     {
@@ -155,7 +155,7 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                                 }
                                 else
                                 {
-                                    Alert("STACK WITH YOUR PARTNER FAST", GradientColor.Get(0xff000000.ToVector4(), ImGuiColors.ParsedPurple, 200));
+                                    Alert("", GradientColor.Get(0xff000000.ToVector4(), ImGuiColors.ParsedPurple, 200));
                                     var pl = GetClosestPlayer();
                                     if (Controller.TryGetElementByName("Stack partner", out var e) && pl != null)
                                     {
@@ -168,17 +168,17 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                                 {
                                     if (IsAnyoneUnsafe)
                                     {
-                                        Alert("Await for debuff before breaking!", Colors.Red.ToVector4());
+                                        Alert("", Colors.Red.ToVector4());
                                     }
                                     else
                                     {
-                                        Alert("Break - go far!", GradientColor.Get(ImGuiColors.DalamudRed, ImGuiColors.DalamudYellow, 200));
+                                        Alert("", GradientColor.Get(ImGuiColors.DalamudRed, ImGuiColors.DalamudYellow, 200));
                                     }
                                 }
                             }
                             else
                             {
-                                Alert("Stack together");
+                                Alert("");
                                 var pl = GetClosestPlayer();
                                 if (Controller.TryGetElementByName("Stack partner", out var e) && pl != null)
                                 {
@@ -205,11 +205,11 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                             {
                                 if (isMeClose)
                                 {
-                                    Alert("Middle, bait Beyond Defense", ImGuiColors.DalamudRed);
+                                    Alert("", ImGuiColors.DalamudRed);
                                 }
                                 else
                                 {
-                                    Alert("Bait designated arm", ImGuiColors.DalamudOrange);
+                                    Alert("", ImGuiColors.DalamudOrange);
                                     myArm = arms.OrderBy(x => Vector3.Distance(x.Position, beetle.Position)).ToArray()[0..2].OrderBy(x => Vector3.Distance(Player.Position, x.Position)).First();
                                 }
                             }
@@ -217,12 +217,12 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                             {
                                 if (isMeClose)
                                 {
-                                    Alert("Bait designated arm", ImGuiColors.DalamudOrange);
+                                    Alert("", ImGuiColors.DalamudOrange);
                                     myArm = arms.OrderBy(x => Vector3.Distance(x.Position, final.Position)).ToArray()[2..4].OrderBy(x => Vector3.Distance(Player.Position, x.Position)).First();
                                 }
                                 else
                                 {
-                                    Alert("Bait designated arm", ImGuiColors.DalamudOrange);
+                                    Alert("", ImGuiColors.DalamudOrange);
                                     myArm = arms.OrderBy(x => Vector3.Distance(x.Position, final.Position)).ToArray()[0..2].OrderBy(x => Vector3.Distance(Player.Position, x.Position)).First();
                                 }
                             }
@@ -244,28 +244,28 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                         {
                             if (IsAnyoneUnsafe)
                             {
-                                Alert("Await for debuff before breaking!", Colors.Red.ToVector4());
+                                Alert("", Colors.Red.ToVector4());
                             }
                             else
                             {
-                                Alert("Break - go far!", GradientColor.Get(ImGuiColors.DalamudRed, ImGuiColors.DalamudYellow, 200));
+                                Alert("", GradientColor.Get(ImGuiColors.DalamudRed, ImGuiColors.DalamudYellow, 200));
                             }
                         }
                         if(myTether == Effects.UpcomingBlueTether)
                         {
                             if (!HasEffect(Effects.TwiceRuin))
                             {
-                                Alert("Stack in middle", ImGuiColors.HealerGreen);
+                                Alert("", ImGuiColors.HealerGreen);
                             }
                             else
                             {
-                                Alert("AVOID STACK AND MONITORS", ImGuiColors.DPSRed);
+                                Alert("", ImGuiColors.DPSRed);
                                 Controller.GetElementByName("Beetle").Enabled = true;
                             }
                         }
                         else
                         {
-                            Alert("Spread for monitors baits", ImGuiColors.HealerGreen);
+                            Alert("", ImGuiColors.HealerGreen);
                         }
                         if (!FakeParty.Get().Any(x => x.HasEffect(Effects.MonitorLeft) || x.HasEffect(Effects.MonitorRight)))
                         {
@@ -277,17 +277,17 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                     {
                         if (HasEffect(Effects.NearWorld))
                         {
-                            Alert("NEAR WORLD", ImGuiColors.HealerGreen);
+                            Alert("", ImGuiColors.HealerGreen);
                         }
                         else if (HasEffect(Effects.FarWorld))
                         {
-                            Alert("FAR WORLD", ImGuiColors.ParsedBlue);
+                            Alert("", ImGuiColors.ParsedBlue);
                         }
                         else
                         {
                             if(myTether == Effects.UpcomingBlueTether)
                             {
-                                Alert("Bait near world");
+                                Alert("");
                             }
                             else
                             {
@@ -297,21 +297,21 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                                     {
                                         if (IsAnyoneUnsafe)
                                         {
-                                            Alert("Await for debuff before breaking!", Colors.Red.ToVector4());
+                                            Alert("", Colors.Red.ToVector4());
                                         }
                                         else
                                         {
-                                            Alert("Break - go CLOSE!", GradientColor.Get(ImGuiColors.DalamudRed, ImGuiColors.DalamudYellow, 200));
+                                            Alert("", GradientColor.Get(ImGuiColors.DalamudRed, ImGuiColors.DalamudYellow, 200));
                                         }
                                     }
                                     else
                                     {
-                                        Alert("Go to chill spot");
+                                        Alert("");
                                     }
                                 }
                                 else
                                 {
-                                    Alert("Far - maintain tether, bait far world", ImGuiColors.HealerGreen);
+                                    Alert("", ImGuiColors.HealerGreen);
                                 }
                             }
                         }
@@ -327,11 +327,11 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                         {
                             if (IsAnyoneUnsafe)
                             {
-                                Alert("Await for debuff before breaking!", Colors.Red.ToVector4());
+                                Alert("", Colors.Red.ToVector4());
                             }
                             else
                             {
-                                Alert("Break - go CLOSE!", GradientColor.Get(ImGuiColors.DalamudRed, ImGuiColors.DalamudYellow, 200));
+                                Alert("", GradientColor.Get(ImGuiColors.DalamudRed, ImGuiColors.DalamudYellow, 200));
                             }
                         }
                         else
