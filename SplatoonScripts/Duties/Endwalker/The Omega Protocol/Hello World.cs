@@ -1,4 +1,4 @@
-﻿using Dalamud.Game.ClientState.Objects.SubKinds;
+using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface.Colors;
 using ECommons;
@@ -182,11 +182,11 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                     if(Conf.EnableVisualElementsTowers) TowerRed(false);
                     if (HasEffect(Effects.Defamation))
                     {
-                        if(Conf.EnableOverheadHintsGeneric) Reminder("Defamation: inside red tower edge", ImGuiColors.DalamudRed);
+                        if(Conf.EnableOverheadHintsGeneric) Reminder("赤の塔の奥寄り", ImGuiColors.DalamudRed);
                     }
                     else
                     {
-                        if (Conf.EnableOverheadHintsGeneric) Reminder("Inside red tower >>stack<<", ImGuiColors.DalamudRed);
+                        if (Conf.EnableOverheadHintsGeneric) Reminder("赤の塔の横寄り", ImGuiColors.DalamudRed);
                     }
                 }
                 else if (HasEffect(Effects.BlueRot))
@@ -194,11 +194,11 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                     if (Conf.EnableVisualElementsTowers) TowerBlue(false);
                     if (HasEffect(Effects.Defamation))
                     {
-                        if (Conf.EnableOverheadHintsGeneric) Reminder("Defamation: inside blue tower edge", ImGuiColors.TankBlue);
+                        if (Conf.EnableOverheadHintsGeneric) Reminder("青の塔の奥寄り", ImGuiColors.TankBlue);
                     }
                     else
                     {
-                        if (Conf.EnableOverheadHintsGeneric) Reminder("Inside blue tower >>stack<<", ImGuiColors.TankBlue);
+                        if (Conf.EnableOverheadHintsGeneric) Reminder("青の塔の横寄り", ImGuiColors.TankBlue);
                     }
                 }
                 else if (HasEffect(Effects.UpcomingCloseTether, 10f))
@@ -210,12 +210,12 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                         if (isDefamationRed)
                         {
                             if (Conf.EnableVisualElementsTowers) TowerRed(true);
-                            if (Conf.EnableOverheadHintsGeneric) Reminder("Far out of red tower - pick up DEFAMATION", ImGuiColors.DalamudRed);
+                            if (Conf.EnableOverheadHintsGeneric) Reminder("赤の塔の上", ImGuiColors.DalamudRed);
                         }
                         else
                         {
                             if (Conf.EnableVisualElementsTowers) TowerBlue(true);
-                            if (Conf.EnableOverheadHintsGeneric) Reminder("Far out of blue tower - pick up DEFAMATION", ImGuiColors.TankBlue);
+                            if (Conf.EnableOverheadHintsGeneric) Reminder("青の塔の上", ImGuiColors.TankBlue);
                         }
                         if(partner != null)
                         {
@@ -232,12 +232,12 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                         if (isDefamationRed)
                         {
                             if (Conf.EnableVisualElementsTowers) TowerBlue(true);
-                            if (Conf.EnableOverheadHintsGeneric) Reminder("Between blue towers - final stack or avoid", ImGuiColors.TankBlue);
+                            if (Conf.EnableOverheadHintsGeneric) Reminder("青の塔の間 - 最後は避ける", ImGuiColors.TankBlue);
                         }
                         else
                         {
                             if (Conf.EnableVisualElementsTowers) TowerRed(true);
-                            if (Conf.EnableOverheadHintsGeneric) Reminder("Between red towers - final stack or avoid", ImGuiColors.DalamudRed);
+                            if (Conf.EnableOverheadHintsGeneric) Reminder("赤の塔の間 - 最後は避ける", ImGuiColors.DalamudRed);
                         }
                     }
                 }
@@ -247,12 +247,12 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                     if (isDefamationRed)
                     {
                         if (Conf.EnableVisualElementsTowers) TowerBlue(true);
-                        if (Conf.EnableOverheadHintsGeneric) Reminder("Between blue towers" + (counter==4? " - final STACK" : " - STACK"), ImGuiColors.TankBlue);
+                        if (Conf.EnableOverheadHintsGeneric) Reminder("青の塔の間" + (counter==4? " - final STACK" : " - STACK"), ImGuiColors.TankBlue);
                     }
                     else
                     {
                         if (Conf.EnableVisualElementsTowers) TowerRed(true);
-                        if (Conf.EnableOverheadHintsGeneric) Reminder("Between red towers" + (counter == 4 ? " - final STACK" : " - STACK"), ImGuiColors.DalamudRed);
+                        if (Conf.EnableOverheadHintsGeneric) Reminder("赤の塔の間" + (counter == 4 ? " - final STACK" : " - STACK"), ImGuiColors.DalamudRed);
                     }
                 }
             }
@@ -262,7 +262,7 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                 Reminder(null);
                 if (RotPicker)
                 {
-                    if(Conf.EnableRotPickerReminding) Reminder("Pick up rot", 0xFF000000.ToVector4());
+                    if(Conf.EnableRotPickerReminding) Reminder(動け！", 0xFF000000.ToVector4());
                     if(HasEffect(Effects.BlueRot) || HasEffect(Effects.RedRot))
                     {
                         RotPicker = false;
@@ -272,11 +272,11 @@ namespace SplatoonScriptsOfficial.Duties.Endwalker.The_Omega_Protocol
                 {
                     if (HasEffect(Effects.FarTether))
                     {
-                        if(Conf.EnableOverheadHintsTether) Reminder("Break tethers - go FAR", ImGuiColors.HealerGreen);
+                        if(Conf.EnableOverheadHintsTether) Reminder("離れる", ImGuiColors.HealerGreen);
                     }
                     if (HasEffect(Effects.CloseTether) && !Svc.Objects.Any(x => x is PlayerCharacter pc && HasEffect(Effects.FarTether)))
                     {
-                        if (Conf.EnableOverheadHintsTether) Reminder("Break tethers - go CLOSE", ImGuiColors.ParsedBlue);
+                        if (Conf.EnableOverheadHintsTether) Reminder("近づく", ImGuiColors.ParsedBlue);
                     }
                 }
             }
